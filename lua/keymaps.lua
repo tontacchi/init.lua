@@ -3,14 +3,21 @@ vim.keymap.set("n", "<space><space>x", "<cmd>source %<cr>")  -- source & run ent
 vim.keymap.set("n", "<space>x", ":.lua<cr>")                 -- run current line
 vim.keymap.set("v", "<space>x", ":lua<cr>")                  -- run highlighted lines
 
--- netrw
+-- netrw (does not work with oil.nvim by default)
 vim.keymap.set("n", "<leader>pv", "<cmd>Ex<cr>")
 
 -- toggle folds
 vim.keymap.set("n", ",", "za")
 
+-- disable <F1> (avoids mistype on <esc>. :h is still available)
+vim.keymap.set("n", "<F1>", "<cmd>echo<cr>")
+vim.keymap.set("v", "<F1>", "<cmd>echo<cr>")
+vim.keymap.set("i", "<F1>", "<cmd>echo<cr>")
+vim.keymap.set("c", "<F1>", "<cmd>echo<cr>")
+vim.keymap.set("i", "<F13>", "<cmd>echo<cr>")
+
 -- highlight whole file
-vim.keymap.set("n", "<C-a>", "ggVG")
+-- vim.keymap.set("n", "<C-a>", "ggVG")
 
 -- new tab
 -- vim.keymap.set("n", "<space>te", "<cmd>tabedit<cr>")
@@ -84,4 +91,10 @@ vim.keymap.set("n", "<leader>lv", function()
 		print("showing LSP diagonsitcs")
 	end
 end)
+
+-- captialize guard for file saving
+vim.api.nvim_create_user_command("W", "w", { nargs = 0 })
+vim.api.nvim_create_user_command("Wq", "wq", { nargs = 0 })
+vim.api.nvim_create_user_command("WQ", "wq", { nargs = 0 })
+vim.api.nvim_create_user_command("Q", "q", { nargs = 0 })
 

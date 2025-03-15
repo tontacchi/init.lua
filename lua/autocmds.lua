@@ -1,4 +1,4 @@
-
+-- removes line numbers in opened terminals
 vim.api.nvim_create_autocmd(
     "TermOpen",
     {
@@ -11,6 +11,7 @@ vim.api.nvim_create_autocmd(
     }
 )
 
+-- highlights yanked text
 vim.api.nvim_create_autocmd(
     "TextYankPost",
     {
@@ -20,14 +21,23 @@ vim.api.nvim_create_autocmd(
     }
 )
 
--- comment w/ ctrl + / for each file type
-vim.api.nvim_create_autocmd(
-	"FileType",
-	{
-		pattern = "kotlin",
-		callback = function()
-			vim.api.nvim_buf_set_keymap(0, 'i', "<C-_>", "//", {nowait = true, silent = true})
-		end
-	}
-)
+-- toggles set number <-> relativenumber for normal & insert mode
+-- vim.api.nvim_create_autocmd(
+-- 	"InsertEnter",
+-- 	{
+-- 		pattern  = "*",
+-- 		callback = function()
+-- 			vim.opt.relativenumber = false
+-- 		end,
+-- 	}
+-- )
+-- vim.api.nvim_create_autocmd(
+-- 	"InsertLeave",
+-- 	{
+-- 		pattern  = "*",
+-- 		callback = function()
+-- 			vim.opt.relativenumber = true
+-- 		end,
+-- 	}
+-- )
 

@@ -25,7 +25,7 @@ local mason = {
 				ensure_installed = {
 					'pyright',
 					'lua_ls',
-					-- 'kotlin_language_server'
+					'gopls',
 				},
 				handlers = {
 					function(server_name)
